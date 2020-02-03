@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import "./App.css";
-import Routes from './Routes';
+import Routes from "./Routes";
+import { LinkContainer } from "react-router-bootstrap";
 
 export default function App(props) {
   return (
@@ -17,10 +18,12 @@ export default function App(props) {
         {/* The Navbar.Collapse component ensures that on mobile devices the two links will be collapsed. */}
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavItem href="/signup">
-              Signup
-            </NavItem>
-            <NavItem href="/login">Login</NavItem>
+            <LinkContainer to="/signup">
+              <NavItem>Signup</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/login">
+              <NavItem>Login</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -28,4 +31,3 @@ export default function App(props) {
     </div>
   );
 }
-

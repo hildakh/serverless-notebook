@@ -36,6 +36,7 @@ export default function Login(props) {
         />
         </FormGroup>
         <Button block bsSize="large" disabled={!validateForm()} type="submit">
+          {/* disables the form if validateform returns false */}
           Login
         </Button>
       </form>

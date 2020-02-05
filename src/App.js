@@ -29,7 +29,7 @@ export default function App(props) {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <Routes />
+      <Routes appProps={{ isAuthenticated, setAuthenticated }} />
     </div>
   );
 }

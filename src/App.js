@@ -6,7 +6,9 @@ import Routes from "./Routes";
 import { LinkContainer } from "react-router-bootstrap";
 
 export default function App(props) {
-
+  const handleLogout = function() {
+    setAuthenticated(false);
+  }
   const [isAuthenticated, setAuthenticated] = useState(false);
   return (
     <div className="App container">
@@ -20,12 +22,17 @@ export default function App(props) {
         {/* The Navbar.Collapse component ensures that on mobile devices the two links will be collapsed. */}
         <Navbar.Collapse>
           <Nav pullRight>
+            { isAuthenticated ?
+            <NavItem onClick={handleLogout}>Logout</NavItem>
+            : <>
             <LinkContainer to="/signup">
               <NavItem>Signup</NavItem>
             </LinkContainer>
             <LinkContainer to="/login">
               <NavItem>Login</NavItem>
             </LinkContainer>
+            </>
+          }
           </Nav>
         </Navbar.Collapse>
       </Navbar>

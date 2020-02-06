@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import "./App.css";
 import Routes from "./Routes";
 import { LinkContainer } from "react-router-bootstrap";
 import { Auth } from 'aws-amplify';
 
-export default function App(props) {
+function App (appProps) {
   async function handleLogout() {
     await Auth.signOut();
-
     userHasAuthenticated(false);
+    appProps.history.push("/login");
   }
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -32,7 +32,6 @@ export default function App(props) {
     }
     setIsAuthenticating(false);
   }
-
 
   return (
     !isAuthenticating &&
@@ -65,3 +64,5 @@ export default function App(props) {
     </div>
   );
 }
+
+export default withRouter(App);

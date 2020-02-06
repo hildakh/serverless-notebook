@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import "./App.css";
@@ -10,11 +10,26 @@ export default function App(props) {
   const handleLogout = function() {
     userHasAuthenticated(false);
   }
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
 
- // We start with the value set to true because as we first load our app, it’ll start by checking the current authentication state.
+  useEffect( () => {
+    onLoad();
+  }, []);
 
-  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  async function onLoad() {
+    try {
+      await Auth.currentSession();
+      userHasAuthenticated(true);
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+    setIsAuthenticating(false);
+  }
+
 
   return (
     <div className="App container">

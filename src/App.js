@@ -32,6 +32,7 @@ export default function App(props) {
 
 
   return (
+    !isAuthenticating &&
     <div className="App container">
       <Navbar fluid collapseOnSelect>
         <Navbar.Header>

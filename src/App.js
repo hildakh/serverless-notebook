@@ -7,9 +7,12 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Auth } from 'aws-amplify';
 
 export default function App(props) {
-  const handleLogout = function() {
+  async function handleLogout() {
+    await Auth.signOut();
+
     userHasAuthenticated(false);
   }
+
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
 

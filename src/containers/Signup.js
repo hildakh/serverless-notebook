@@ -24,7 +24,7 @@ export default function Signup(props) {
     return (
       fields.email.length > 0 &&
       fields.password.length > 0 &&
-      fields.password === fields.passwordConfirmation
+      fields.password === fields.confirmPassword
     );
   }
 
@@ -70,7 +70,7 @@ export default function Signup(props) {
           <ControlLabel>Confirm Password</ControlLabel>
           <FormControl
             type="password"
-            value={fields.passwordConfirmation}
+            value={fields.confirmPassword}
             onChange={handleFieldChange}
           />
         </FormGroup>

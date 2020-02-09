@@ -4,6 +4,7 @@ import LoaderButton from '../components/LoaderButton';
 import config from '../config';
 import './NewNote.css';
 import { API } from 'aws-amplify';
+import { s3Upload } from '../libs/awsLib';
 
 export default function NewNote(props) {
   // useRef hook does not cause the component to rerender
@@ -40,7 +41,9 @@ export default function NewNote(props) {
     setIsLoading(true);
 
     try {
-      await createNote({ content });
+      const attachment = file.current ? await s3Upload(file.current) : null;
+
+      await createNote({ content, attachment });
       // redirects the user to the home page after creating a note
       props.history.push("/");
     } catch (e) {

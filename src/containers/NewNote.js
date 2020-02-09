@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import LoaderButton from '../components/LoaderButton';
 import config from '../config';
-import '../NewNote.css';
+import './NewNote.css';
 
 export default function NewNote(props) {
   // useRef hook does not cause the component to rerender
@@ -17,7 +17,6 @@ export default function NewNote(props) {
 
   function handleFileChange(event) {
     // We can set/get the current value of a ref by using its current property.
-    console.log(event.target)
     file.current = event.target.files[0]
   }
 

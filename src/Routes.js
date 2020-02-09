@@ -6,6 +6,7 @@ import Login from './containers/Login';
 import AppliedRoute from './components/AppliedRoute';
 import Signup from './containers/Signup';
 import NewNote from './containers/NewNote';
+
 export default function Routes({ appProps }) {
   return (
     <Switch>

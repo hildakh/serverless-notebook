@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./Home.css";
-import { PageHeader, ListGroup } from "react-bootstrap";
-import { API } from 'aws-amplify';
+import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import { LinkContainer } from "react-bootstrap";
+import { API } from "aws-amplify";
 export default function Home(props) {
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -10,15 +11,15 @@ export default function Home(props) {
     return API.get("notes", "/notes");
   }
 
-  useEffect( () => {
+  useEffect(() => {
     async function onLoad() {
-      if(!props.isAuthenticated) {
+      if (!props.isAuthenticated) {
         return;
       }
       try {
-        const notes = await loadNotes()
+        const notes = await loadNotes();
         setNotes(notes);
-      } catch(e) {
+      } catch (e) {
         alert(e);
       }
       setIsLoading(false);
@@ -36,17 +37,36 @@ export default function Home(props) {
   }
 
   function renderNotesList(notes) {
-    return null;
-  }
+    return (
+      <div>
+        <LinkContainer key="new" to="/notes/new">
+          <ListGroupItem>
+            <h4>
+              <b>{"\uFF0B"}</b> Create a new note!
+            </h4>
+          </ListGroupItem>
+        </LinkContainer>
 
+        <Fragment>
+          {notes.map(note => (
+            <LinkContainer key={note.noteId} to={`/notes/${note.noteId}`}>
+              {/* trim removed the dead space and split breaks down the message based on line breaks. index 0 takes the first line of the message and sets it to the header */}
+              <ListGroupItem header={note.content.trim().split("\n")[0]}>
+                {"Created: " + new Date(note.createdAt).toLocaleString()}
+              </ListGroupItem>
+            </LinkContainer>
+          ))}
+        </Fragment>
+
+      </div>
+    );
+  }
 
   function renderNotes() {
     return (
       <div className="notes">
         <PageHeader>Your Notes</PageHeader>
-        <ListGroup>
-          { !isLoading && renderNotesList(notes)}
-        </ListGroup>
+        <ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
       </div>
     );
   }
@@ -54,7 +74,7 @@ export default function Home(props) {
   return (
     <div className="Home">
       <div className="lander">
-        { props.isAuthenticated ? renderNotes() : renderLander()}
+        {props.isAuthenticated ? renderNotes() : renderLander()}
       </div>
     </div>
   );

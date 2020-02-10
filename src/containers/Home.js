@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./Home.css";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
-import { LinkContainer } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 export default function Home(props) {
   const [notes, setNotes] = useState([]);

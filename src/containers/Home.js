@@ -1,11 +1,31 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { PageHeader, ListGroup } from "react-bootstrap";
-// import { getBsProps } from "react-bootstrap/lib/utils/bootstrapUtils";
-
+import { API } from 'aws-amplify';
 export default function Home(props) {
   const [notes, setNotes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  function loadNotes(notes) {
+    return API.get("notes", "/notes");
+  }
+
+  useEffect( () => {
+    async function onLoad() {
+      if(!props.isAuthenticated) {
+        return;
+      }
+      try {
+        const notes = await loadNotes()
+        setNotes(notes);
+      } catch(e) {
+        alert(e);
+      }
+      setIsLoading(false);
+    }
+
+    onLoad();
+  }, [props.isAuthenticated]);
 
   function renderLander() {
     return (

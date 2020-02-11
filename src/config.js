@@ -1,20 +1,19 @@
-const env = require('dotenv');
-env.config();
+
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
-
+  // identityPoolRegion: 'us-east-2',
   s3: {
-    REGION: env.REGION,
-    BUCKET: env.BUCKET
+    REGION: "us-east-2",
+    BUCKET: "notes-hilda"
   },
   apiGateway: {
-    REGION: env.REGION,
-    URL: env.URL
+    REGION: "us-east-2",
+    URL: " https://qb7hs36mda.execute-api.us-east-2.amazonaws.com/prod"
   },
   cognito: {
-    REGION: env.REGION,
-    USER_POOL_ID: env.USER_POOL_ID,
-    APP_CLIENT_ID: env.APP_CLIENT_ID,
-    IDENTITY_POOL_ID: env.IDENTITY_POOL_ID
+    REGION: "us-east-2",
+    USER_POOL_ID: "us-east-2_LlssBgBau",
+    APP_CLIENT_ID: "3nanr14bsg1g98vd7dgg5u65hq",
+    IDENTITY_POOL_ID: "us-east-2:ca8bcdf7-b021-4d11-b552-3c843b3f857c"
   }
 };

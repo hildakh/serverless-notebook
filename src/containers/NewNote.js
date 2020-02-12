@@ -41,7 +41,7 @@ export default function NewNote(props) {
     setIsLoading(true);
 
     try {
-      const attachment = file.current ? await s3Upload(file.current) : null;
+      const attachment = file.current ? await s3Upload(file.current).key : null;
 
       await createNote({ content, attachment });
       // redirects the user to the home page after creating a note

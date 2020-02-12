@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom';
 import Amplify from 'aws-amplify';
-import config from './config';
+import config from '../src/config';
 
 // initializing AWS Amplify
 // Amplify refers to Cognito as Auth, S3 as Storage, and API Gateway as API

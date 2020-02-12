@@ -54,7 +54,7 @@ function handleFileChange(event) {
 }
 
 async function handleSubmit(event) {
-  let attachment;
+  // let attachment;
 
   event.preventDefault();
 

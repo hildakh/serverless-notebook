@@ -21,18 +21,20 @@ export default function Notes(props) {
   async function onLoad() {
     try {
       const note = await loadNote();
+      console.log(note);
       const { content, attachment } = note;
 
       if(attachment) {
         note.attachment = await Storage.vault.get(attachment);
+        console.log(attachment);
       }
 
       // note is the whole note object but content is the text types for the saved note
       setContent(content);
       setNote(note);
-      console.log('note', note);
-      console.log('note attachment', note.attachment);
-      console.log('attachment url', note.attachmentURL);
+      // console.log('note', note);
+      // console.log('note attachment', note.attachment);
+      // console.log('attachment url', note.attachmentURL);
     } catch(e) {
       alert(e);
     }

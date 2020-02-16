@@ -48,6 +48,13 @@ export default function Notes(props) {
     file.current = event.target.files[0];
   }
 
+  function saveNote(note) {
+    // console.log(props.match.params)
+    return API.put("notes", `/notes/${props.match.params.id}`, {
+      body: note
+    });
+  }
+
   async function handleSubmit(event) {
     let attachment;
 

@@ -12,5 +12,5 @@ export async function s3Upload(file) {
 }
 
 export async function s3Delete(file) {
-  return await Storage.vault.delete(file);
+  return await Storage.vault.remove(file);
 }

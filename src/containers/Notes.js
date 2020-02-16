@@ -71,10 +71,6 @@ export default function Notes(props) {
 
     setIsLoading(true);
 
-    // function removeAttachment() {
-    //   return API.remove(note.attachment);
-    // }
-
     try {
       if(file.current) {
         await s3Delete(note.attachment);

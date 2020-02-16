@@ -10,3 +10,10 @@ export async function s3Upload(file) {
   // console.log(filename);
   return stored.key;
 }
+
+// export async function s3Delete(file) {
+//   const params = {
+//   Bucket: s3BucketName,
+//   Key: "filename" //if any sub folder-> path/of/the/folder.ext
+//   }
+// }

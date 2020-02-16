@@ -6,12 +6,7 @@ import Routes from "./Routes";
 import { LinkContainer } from "react-router-bootstrap";
 import { Auth } from 'aws-amplify';
 
-function App (appProps) {
-  async function handleLogout() {
-    await Auth.signOut();
-    userHasAuthenticated(false);
-    appProps.history.push("/login");
-  }
+function App (props) {
 
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -32,7 +27,11 @@ function App (appProps) {
     }
     setIsAuthenticating(false);
   }
-
+  async function handleLogout() {
+    await Auth.signOut();
+    userHasAuthenticated(false);
+    props.history.push("/login");
+  }
   return (
     !isAuthenticating &&
     <div className="App container">

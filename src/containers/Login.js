@@ -7,7 +7,7 @@ import { useFormFields } from '../libs/hooksLib';
 
 export default function Login(props) {
   const [isLoading, setIsLoading] = useState(false);
-  const [fields, hadnleFieldChange] = useFormFields({
+  const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: ""
   });
@@ -39,7 +39,7 @@ export default function Login(props) {
           autoFocus
           type="email"
           value={fields.email}
-          onChange={hadnleFieldChange}
+          onChange={handleFieldChange}
           />
         </FormGroup>
 
@@ -48,7 +48,7 @@ export default function Login(props) {
         <FormControl
         type="password"
         value={fields.password}
-        onChange={hadnleFieldChange}
+        onChange={handleFieldChange}
         />
         </FormGroup>
         <LoaderButton

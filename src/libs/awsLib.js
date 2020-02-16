@@ -11,9 +11,6 @@ export async function s3Upload(file) {
   return stored.key;
 }
 
-// export async function s3Delete(file) {
-//   const params = {
-//   Bucket: s3BucketName,
-//   Key: "filename" //if any sub folder-> path/of/the/folder.ext
-//   }
-// }
+export async function s3Delete(file) {
+  return await Storage.vault.remove(file);
+}

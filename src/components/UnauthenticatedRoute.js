@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Redirect, Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 export default function UnauthenticatedRoute({ component: C, appProps, ...rest}) {
   return(

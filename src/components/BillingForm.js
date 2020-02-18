@@ -7,6 +7,7 @@ import { useFormFields } from '../libs/hooksLib';
 import './BillingForm.css';
 
 function BillingForm(props) {
+  let isLoading = props.isLoading;
   const [fields, handleFieldChange] = useFormFields({
     name: "",
     storage: ""
@@ -14,7 +15,7 @@ function BillingForm(props) {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCardComplete, setIsCardComplete] = useState(false);
 
-  props.isLoading = isProcessing || props.isLoading;
+  isLoading = isProcessing || isLoading;
 
   function validateForm() {
     return (
@@ -33,7 +34,7 @@ function BillingForm(props) {
 
     setIsProcessing(false);
 
-    onsubmit(fields.storage, { token, error });
+    props.onSubmit(fields.storage, { token, error });
   }
 
   return (
@@ -71,7 +72,7 @@ function BillingForm(props) {
       block
       type="submit"
       bsSize="large"
-      isLoading={props.isLoading}
+      isLoading={isLoading}
       disabled={!validateForm()}
       >
         Purchase

@@ -7,6 +7,7 @@ import AppliedRoute from './components/AppliedRoute';
 import Signup from './containers/Signup';
 import NewNote from './containers/NewNote';
 import Notes from './containers/Notes';
+import Settings from './containers/Settings';
 
 export default function Routes({ appProps }) {
   return (
@@ -15,6 +16,7 @@ export default function Routes({ appProps }) {
       {/* Finally, catch all unmatched routes */}
       <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
       <AppliedRoute path="/signup" exact component={Signup} appProps={appProps} />
+      <AppliedRoute path="/billing" exact component={Settings} appProps={appProps} />
       <AppliedRoute path="/notes/new" exact component={NewNote} appProps={appProps} />
       <AppliedRoute path="/notes/:id" exact component={Notes} appProps={appProps} />
       <Route component={NotFound} />

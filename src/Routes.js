@@ -16,7 +16,7 @@ export default function Routes({ appProps }) {
       {/* Finally, catch all unmatched routes */}
       <AppliedRoute path="/login" exact component={Login} appProps={appProps} />
       <AppliedRoute path="/signup" exact component={Signup} appProps={appProps} />
-      <AppliedRoute path="/billing" exact component={Settings} appProps={appProps} />
+      <AppliedRoute path="/settings" exact component={Settings} appProps={appProps} />
       <AppliedRoute path="/notes/new" exact component={NewNote} appProps={appProps} />
       <AppliedRoute path="/notes/:id" exact component={Notes} appProps={appProps} />
       <Route component={NotFound} />

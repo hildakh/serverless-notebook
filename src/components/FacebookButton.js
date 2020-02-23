@@ -16,13 +16,11 @@ function waitForInit() {
 }
 
 export default function FacebookButton(props) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect( () => {
     waitForInit();
   }, []);
-
-  setIsLoading(false);
 
   function handleError(error){
     alert(error);
@@ -71,9 +69,9 @@ export default function FacebookButton(props) {
     bsSize='large'
     bsStyle='primary'
     className='FacebookButton'
-    text='Login with Facebook'
     onClick={handleClick}
     disabled={isLoading}
-    />
+    > Login with Facebook
+      </LoaderButton>
   );
 }

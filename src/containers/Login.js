@@ -39,6 +39,7 @@ export default function Login(props) {
         <FacebookButton
         onLogin={handleFbLogin}
         />
+        <hr />
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
           <FormControl

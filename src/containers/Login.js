@@ -4,6 +4,7 @@ import './Login.css';
 import { Auth } from "aws-amplify";
 import LoaderButton from '../components/LoaderButton';
 import { useFormFields } from '../libs/hooksLib';
+import FacebookButton from '../components/FacebookButton';
 
 export default function Login(props) {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,6 +13,9 @@ export default function Login(props) {
     password: ""
   });
 
+  function handleFbLogin() {
+    props.userHasAuthenticated(true);
+  }
   function validateForm() {
     return fields.email.length > 0 && fields.password.length > 0;
   }
@@ -32,6 +36,10 @@ export default function Login(props) {
   return (
     <div className="Login">
       <form onSubmit={handleSubmit}>
+        <FacebookButton
+        onLogin={handleFbLogin}
+        />
+        <hr />
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>
           <FormControl

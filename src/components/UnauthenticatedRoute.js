@@ -9,9 +9,6 @@ function queryString(name, url = window.location.href) {
   // The exec() method executes a search for a match in a specified string. Returns a result array, or null.
   const results = regex.exec(url);
 
-  console.log("regex", regex);
-  console.log("results", results);
-
   if(!results) {
     return null;
   }

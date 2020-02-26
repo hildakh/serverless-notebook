@@ -11,7 +11,7 @@ export default function NewNote(props) {
   //the browser will handle the state of the file rather than the component
   const file = useRef(null);
   const [content, setContent] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   function validateForm() {
     return content.length > 0;
@@ -33,7 +33,7 @@ export default function NewNote(props) {
       return;
     }
 
-    setIsLoading(true);
+    setisLoading(true);
 
     try {
       const attachment = file.current
@@ -44,7 +44,7 @@ export default function NewNote(props) {
       props.history.push("/");
     } catch (e) {
       alert(e);
-      setIsLoading(false);
+      setisLoading(false);
     }
   }
 

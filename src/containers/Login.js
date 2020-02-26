@@ -7,7 +7,7 @@ import { useFormFields } from '../libs/hooksLib';
 import FacebookButton from '../components/FacebookButton';
 
 export default function Login(props) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const [fields, handleFieldChange] = useFormFields({
     email: "",
     password: ""
@@ -22,14 +22,14 @@ export default function Login(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
+    setisLoading(true);
 
     try {
       await Auth.signIn(fields.email, fields.password);
       props.userHasAuthenticated(true);
     } catch (e) {
       alert(e.message);
-      setIsLoading(false);
+      setisLoading(false);
     }
   }
 

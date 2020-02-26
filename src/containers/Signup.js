@@ -20,7 +20,7 @@ export default function Signup(props) {
   });
 
   const [newUser, setNewUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   function handleFbLogin() {
     props.userHasAuthenticated(true);
@@ -39,24 +39,24 @@ export default function Signup(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
+    setisLoading(true);
 
     try {
       const newUser = await Auth.signUp({
         username: fields.email,
         password: fields.password
       });
-      setIsLoading(false);
+      setisLoading(false);
       setNewUser(newUser);
     } catch(e) {
       alert(e.message);
-      setIsLoading(false);
+      setisLoading(false);
     }
   }
 
   async function handleConfirmationSubmit(event) {
     event.preventDefault();
-    setIsLoading(true);
+    setisLoading(true);
 
     try {
       await Auth.confirmSignUp(fields.email, fields.confirmationCode);
@@ -66,7 +66,7 @@ export default function Signup(props) {
       props.history.push("/");
     } catch (e) {
       alert(e.message)
-      setIsLoading(false);
+      setisLoading(false);
     }
   }
 

@@ -7,7 +7,7 @@ import './Settings.css';
 
 
 export default function Settings(props) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   function billUser(details) {
     return API.post("notes", "/billing", {
@@ -21,7 +21,7 @@ async function handleFormSubmit(storage, { token, error }) {
     return
   }
 
-  setIsLoading(true);
+  setisLoading(true);
 
   try {
     await billUser({
@@ -33,7 +33,7 @@ async function handleFormSubmit(storage, { token, error }) {
     props.history.push("/");
   } catch(e) {
     alert(e);
-    setIsLoading(false);
+    setisLoading(false);
   }
 }
 

@@ -5,7 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { API } from "aws-amplify";
 export default function Home(props) {
   const [notes, setNotes] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setisLoading] = useState(true);
 
   function loadNotes(notes) {
     return API.get("notes", "/notes");
@@ -22,7 +22,7 @@ export default function Home(props) {
       } catch (e) {
         alert(e);
       }
-      setIsLoading(false);
+      setisLoading(false);
     }
 
     onLoad();

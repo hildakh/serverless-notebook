@@ -10,7 +10,7 @@ export default function Notes(props) {
   const file = useRef(null);
   const [note, setNote] = useState(null);
   const [content, setContent] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function Notes(props) {
       return;
     }
 
-    setIsLoading(true);
+    setisLoading(true);
 
     try {
       if(file.current) {
@@ -84,7 +84,7 @@ export default function Notes(props) {
       props.history.push("/");
     } catch(e) {
       alert(e);
-      setIsLoading(false);
+      setisLoading(false);
     }
   }
 

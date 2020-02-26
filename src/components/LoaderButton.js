@@ -3,6 +3,7 @@ import { Button, Glyphicon } from 'react-bootstrap';
 import "./LoaderButton.css";
 
 export default function LoaderButton(props) {
+  // props destructured to only use the isLoading prop passed from parent
   let { isLoading, ...otherProps } = props;
   return (
     <Button

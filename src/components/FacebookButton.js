@@ -16,14 +16,14 @@ function waitForInit() {
 }
 
 export default function FacebookButton(props) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   useEffect( () => {
     waitForInit();
   }, []);
 
-  function handleError(error){
-    alert(error);
+  function handleError(error, number){
+    console.log(error);
   };
 
   async function handleResponse(data) {
@@ -31,7 +31,7 @@ export default function FacebookButton(props) {
     const expires_at = expiresIn * 1000 + new Date().getTime();
     const user = { email };
 
-    setIsLoading(true);
+    setisLoading(true);
 
     try {
       const response = await Auth.federatedSignIn(
@@ -39,11 +39,11 @@ export default function FacebookButton(props) {
         { token, expires_at },
         user
       );
-      setIsLoading(false);
+      setisLoading(false);
       props.onLogin(response);
     } catch(e) {
-      setIsLoading(false);
-      handleError(e);
+      setisLoading(false);
+      handleError(e, 1);
     }
   }
 
@@ -70,7 +70,7 @@ export default function FacebookButton(props) {
     bsStyle='primary'
     className='FacebookButton'
     onClick={handleClick}
-    disabled={isLoading}
+    isLoading={isLoading}
     > Login with Facebook
       </LoaderButton>
   );

@@ -60,6 +60,7 @@ export default function NewNote(props) {
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="content">
           <FormControl
+            autoFocus
             value={content}
             componentClass="textarea"
             onChange={e => setContent(e.target.value)}

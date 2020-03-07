@@ -1,5 +1,5 @@
 const dev = {
-  STRIPE_KEY: process.env.REACT_APP_STRIPE_KEY,
+  STRIPE_KEY: "pk_test_KhDWF72ASDt9sV3lhLraQPOT00RuwUmA4u",
   s3: {
     REGION: "us-east-2",
     BUCKET: "notes-app2-api-dev-attachmentsbucket-1u4ej5rfwaq7g"
@@ -17,7 +17,7 @@ const dev = {
 };
 
 const prod = {
-  STRIPE_KEY: process.env.REACT_APP_STRIPE_KEY,
+  STRIPE_KEY: "pk_test_KhDWF72ASDt9sV3lhLraQPOT00RuwUmA4u",
   s3: {
     REGION: "us-east-2",
     BUCKET: "notes-app2-api-prod-attachmentsbucket-ajh9yzga4y8j"
@@ -42,7 +42,7 @@ const config = process.env.REACT_APP_STAGE === 'prod'
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
   social: {
-    FB:  process.env.REACT_APP_FACEBOOK_APP_ID
+    FB:  881979062231831
   },
   ...config
 };

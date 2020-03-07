@@ -41,6 +41,9 @@ const config = process.env.REACT_APP_STAGE === 'prod'
 
 export default {
   MAX_ATTACHMENT_SIZE: 5000000,
+  social: {
+    FB:  process.env.REACT_APP_FACEBOOK_APP_ID
+  },
   ...config
 };
 
